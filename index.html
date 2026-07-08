@@ -16,7 +16,7 @@
             width: 100%;
             margin: 0;
             padding: 0;
-            background-color: #fdfbf7; /* Şık hafif krem arka plan */
+            background-color: #fcfbf7; /* Premium hafif krem arka plan */
         }
 
         body {
@@ -24,7 +24,7 @@
             text-align: center;
         }
 
-        /* Kurumsal Turuncu Kart Yapısı */
+        /* Her Logoya Uyum Sağlayan Premium Kart Yapısı */
         .card {
             background-color: #ffffff;
             width: 90%;
@@ -32,8 +32,8 @@
             margin: 40px auto;
             padding: 35px 25px;
             border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(255, 115, 0, 0.05);
-            border: 1px solid #ffe6d5;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            border: 1px solid #f4efe2;
             text-align: center;
         }
 
@@ -46,8 +46,8 @@
         }
 
         .lang-btn {
-            background-color: #fff8f3;
-            border: 1px solid #ffdcb7;
+            background-color: #faf8f2;
+            border: 1px solid #eae5d8;
             color: #666;
             padding: 6px 14px;
             font-size: 12px;
@@ -58,38 +58,29 @@
         }
 
         .lang-btn.active, .lang-btn:hover {
-            background-color: #ff7300; /* image.png Turuncusu */
-            border-color: #ff7300;
+            background-color: #bc9c6c; /* Elegant Altın/Bronz Dokunuş */
+            border-color: #bc9c6c;
             color: #ffffff;
         }
 
-        /* Güvenli Logo Alanı */
+        /* Tamamen Saf ve Güvenli Logo Alanı */
         .logo-container {
             margin-bottom: 25px;
             text-align: center;
             display: block;
             width: 100%;
-            min-height: 80px;
         }
 
         .logo-container img {
-            width: 120px;
+            width: 150px; /* İdeal logo genişliği */
             max-width: 100%;
             height: auto;
             display: inline-block;
             object-fit: contain;
         }
 
-        /* logo.png bozuksa image.png'deki Güneş Logosunu Çizen SVG Alanı */
-        .logo-svg-fallback {
-            display: none; /* Varsayılan gizli, JS tetikleyecek */
-            width: 90px;
-            height: 90px;
-            margin: 0 auto;
-        }
-
         h1 {
-            color: #ff7300; /* Kurumsal Renk */
+            color: #2c3e50; /* Net ve elit koyu füme */
             font-size: 22px;
             font-weight: 600;
             margin: 0 0 12px 0;
@@ -120,16 +111,16 @@
         input[type="text"] {
             width: 100%;
             padding: 12px 15px;
-            border: 1px solid #ffdcb7;
+            border: 1px solid #eae5d8;
             border-radius: 8px;
             font-size: 15px;
-            background-color: #fff8f3;
+            background-color: #faf8f2;
             outline: none;
             transition: border-color 0.2s;
         }
 
         input[type="text"]:focus {
-            border-color: #ff7300;
+            border-color: #bc9c6c;
             background-color: #ffffff;
         }
 
@@ -138,8 +129,8 @@
             display: flex;
             align-items: flex-start;
             gap: 12px;
-            background-color: #fff8f3;
-            border: 1px solid #ffdcb7;
+            background-color: #faf8f2;
+            border: 1px solid #eae5d8;
             border-radius: 8px;
             padding: 15px;
             margin-bottom: 20px;
@@ -156,7 +147,7 @@
         }
 
         .working-hours strong {
-            color: #ff7300;
+            color: #bc9c6c;
             display: block;
             font-size: 13px;
             margin-bottom: 4px;
@@ -180,7 +171,7 @@
 
         .privacy-group input[type="checkbox"] {
             margin-top: 3px;
-            accent-color: #ff7300;
+            accent-color: #bc9c6c;
             cursor: pointer;
         }
 
@@ -191,14 +182,14 @@
         }
 
         .privacy-text a {
-            color: #ff7300;
+            color: #bc9c6c;
             text-decoration: underline;
             font-weight: 600;
         }
 
-        /* Gönder Butonu */
+        /* Bağlan Butonu */
         .submit-btn {
-            background-color: #ff7300;
+            background-color: #2c3e50; /* Her logoyla uyumlu asil koyu ton */
             color: #ffffff;
             border: none;
             width: 100%;
@@ -211,7 +202,7 @@
         }
 
         .submit-btn:hover {
-            background-color: #e66700;
+            background-color: #1a252f;
         }
     </style>
 </head>
@@ -226,20 +217,9 @@
             <button type="button" id="btn-ru" class="lang-btn" onclick="setLanguage('ru')">RU</button>
         </div>
 
-        <!-- Logo Alanı -->
+        <!-- Sadece ve Sadece logo.png Dosyasına Bakan Temiz Alan -->
         <div class="logo-container">
-            <img src="logo.png" alt="Seamelia Beach Resort Logo" id="main-logo-img">
-            
-            <!-- image.png Dosyasındaki Orijinal Güneş Logosunun SVG İkizi (Yedek) -->
-            <svg id="logo-svg-backup" class="logo-svg-fallback" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="50" r="18" fill="none" stroke="#ff7300" stroke-width="6" />
-                <path d="M50,32 C40,32 35,42 45,50 C52,55 58,45 52,40 C48,37 45,41 48,44" fill="none" stroke="#ff7300" stroke-width="5" stroke-linecap="round" />
-                <!-- Güneş Işınları -->
-                <path d="M50,10 L50,22 M50,78 L50,90 M10,50 L22,50 M78,50 L90,50" stroke="#ff7300" stroke-width="6" stroke-linecap="round" />
-                <path d="M22,22 L30,30 M70,70 L78,78 M22,78 L30,70 M70,32 L78,24" stroke="#ff7300" stroke-width="6" stroke-linecap="round" />
-                <path d="M35,14 L38,24 M65,86 L62,76 M14,35 L24,38 M86,65 L76,62" stroke="#ff7300" stroke-width="5" stroke-linecap="round" />
-                <path d="M14,65 L24,62 M86,35 L76,38 M35,86 L38,76 M65,14 L62,24" stroke="#ff7300" stroke-width="5" stroke-linecap="round" />
-            </svg>
+            <img src="logo.png" alt="Seamelia Beach Resort Logo">
         </div>
 
         <!-- Dinamik Başlıklar -->
@@ -278,7 +258,7 @@
         </form>
     </div>
 
-    <!-- %100 Uyumlu Dil ve Güvenli Denetim Motoru -->
+    <!-- %100 Uyumlu Dil Motoru -->
     <script>
         var translations = {
             tr: {
@@ -326,30 +306,6 @@
                 workingHoursText: "Наша команда по обслуживанию гостей работает ежедневно с <b>09:00 до 16:00</b>.<br>В остальное время вы можете отправить нам сообщение в WhatsApp. Мы ответим как можно скорее."
             }
         };
-
-        // Gelişmiş Güvenli Logo Koruma Denetçisi
-        function checkLogoStatus() {
-            try {
-                var img = document.getElementById('main-logo-img');
-                var backupSvg = document.getElementById('logo-svg-backup');
-                
-                if (img && backupSvg) {
-                    img.onerror = function() {
-                        img.style.display = 'none';
-                        backupSvg.style.display = 'block';
-                    };
-                    
-                    if (img.complete) {
-                        if (typeof img.naturalWidth !== "undefined" && img.naturalWidth === 0) {
-                            img.style.display = 'none';
-                            backupSvg.style.display = 'block';
-                        }
-                    }
-                }
-            } catch (e) {
-                console.log("Logo kontrolü güvenli modda calisiyor.");
-            }
-        }
 
         function setLanguage(lang) {
             try {
@@ -412,12 +368,10 @@
                 console.log("Sistem dili okunurken varsayılana donuldu.");
             }
             setLanguage(defaultLang);
-            checkLogoStatus();
         }
 
         if (window.addEventListener) {
             window.addEventListener('DOMContentLoaded', initLanguage, false);
-            window.addEventListener('load', checkLogoStatus, false);
         } else if (window.attachEvent) {
             window.attachEvent('onload', initLanguage);
         } else {
