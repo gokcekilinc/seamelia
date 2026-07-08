@@ -29,7 +29,7 @@ const translations = {
     },
     ru: {
         welcome: "Добро пожаловать в Seamelia Beach Resort & Spa",
-        subtitle: "Пожалуйста, введите свои данные, чтобы быстро получить доступ к нашим услугам и связаться с нами через WhatsApp.",
+        subtitle: "Пожалуйста, введите свои данные, чтобы быстро получить доступ к нашим услугам и связаться с нами [...]",
         roomLabel: "Номер комнаты",
         roomPlaceholder: "Напр: 1402",
         button: "Подключиться к WhatsApp Concierge",
@@ -88,7 +88,7 @@ function redirectToWhatsApp(event) {
     }
     
     // Otelinizin resmi Guest Relations WhatsApp numarası (Uluslararası formatta, örn: 905xxxxxxxxx)
-    const phoneNumber = "905000000000"; 
+    const phoneNumber = "905309756982"; 
     const message = `Merhaba Seamelia Concierge, Oda Numaram: ${roomNumber}. Yardımcı olabilir misiniz?`;
     
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
