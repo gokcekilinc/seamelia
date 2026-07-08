@@ -17,6 +17,25 @@
             min-height: 100vh;
         }
 
+        /* 24/7 Banner */
+        .banner-24-7 {
+            background: linear-gradient(135deg, #bc9c6c 0%, #a38456 100%);
+            color: #ffffff;
+            padding: 12px 20px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(188, 156, 108, 0.2);
+        }
+
+        .banner-24-7 .icon {
+            font-size: 16px;
+            margin-right: 6px;
+        }
+
         .card {
             background-color: #ffffff;
             width: 100%;
@@ -208,6 +227,12 @@
 </head>
 <body>
 
+    <!-- 24/7 WhatsApp Support Banner -->
+    <div class="banner-24-7">
+        <span class="icon">📱</span>
+        <span id="banner-text">...</span>
+    </div>
+
     <div class="card">
         
         <!-- Üst Kısım: Dil Seçenekleri (TR eklendi) -->
@@ -263,6 +288,7 @@
     <script>
         const translations = {
             tr: {
+                banner: "📱 WhatsApp ile 24/7 bize ulaşabilirsiniz. Yanıtlarımız 09:00-16:00 saatleri arasında verilir.",
                 welcome: "Seamelia Beach Resort & Spa'ya Hoş Geldiniz",
                 subtitle: "Hizmetlerimize hızlıca ulaşmak ve bizimle WhatsApp üzerinden iletişime geçmek için lütfen bilgilerinizi giriniz.",
                 roomLabel: "Oda Numarası",
@@ -274,6 +300,7 @@
                 workingHoursText: "Misafir İlişkileri ekibimiz her gün <b>09:00 - 16:00</b> saatleri arasında hizmetinizdedir.<br>Bu saatlerin dışında da WhatsApp mesajı gönderebilirsiniz. En kısa sürede yanıtlanacaktır."
             },
             en: {
+                banner: "📱 Contact us 24/7 via WhatsApp. Responses are provided between 09:00-16:00.",
                 welcome: "Welcome to Seamelia Beach Resort & Spa",
                 subtitle: "Please enter your information to quickly access our services and contact us via WhatsApp.",
                 roomLabel: "Room Number",
@@ -285,6 +312,7 @@
                 workingHoursText: "Our Guest Relations team is available daily from <b>09:00 - 16:00</b>.<br>Outside these hours, you can still send us a WhatsApp message. We will reply as soon as possible."
             },
             de: {
+                banner: "📱 Kontaktieren Sie uns 24/7 über WhatsApp. Antworten erfolgen zwischen 09:00-16:00 Uhr.",
                 welcome: "Willkommen im Seamelia Beach Resort & Spa",
                 subtitle: "Bitte geben Sie Ihre Daten ein, um schnell auf unsere Dienste zuzugreifen und uns per WhatsApp zu kontaktieren.",
                 roomLabel: "Zimmernummer",
@@ -296,6 +324,7 @@
                 workingHoursText: "Unser Gästeservice-Team ist täglich von <b>09:00 - 16:00</b> Uhr für Sie erreichbar.<br>Außerhalb dieser Zeiten können Sie uns auch eine WhatsApp-Nachricht senden. Wir antworten schnellstmöglich."
             },
             ru: {
+                banner: "📱 Свяжитесь с нами 24/7 через WhatsApp. Ответы даются с 09:00 до 16:00.",
                 welcome: "Добро пожаловать в Seamelia Beach Resort & Spa",
                 subtitle: "Пожалуйста, введите свои данные, чтобы быстро получить доступ к нашим услугам и связаться с нами через WhatsApp.",
                 roomLabel: "Номер комнаты",
@@ -309,6 +338,7 @@
         };
 
         function setLanguage(lang) {
+            document.getElementById('banner-text').textContent = translations[lang].banner;
             document.getElementById('welcome-title').textContent = translations[lang].welcome;
             document.getElementById('welcome-subtitle').textContent = translations[lang].subtitle;
             document.getElementById('room-label').textContent = translations[lang].roomLabel;
