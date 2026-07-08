@@ -1,92 +1,96 @@
-/**
- * Seamelia Beach Resort - WhatsApp Concierge Engine
- * Architecture: Optimized Dynamic Multi-language UI Injection
- */
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Configuration Object
-    const CONFIG = {
-        targetUrl: "https://wa.me/905309756982?text=Hello!%20I%20would%20like%20to%20receive%20assistance%20from%20Guest%20Relations.",
-        fallbackLang: "en"
-    };
-
-    // Complete Localization Dictionary
-    const dictionary = {
-        en: {
-            welcome: "Welcome to Seamelia Beach Resort. Our Guest Relations team is ready to assist you during your stay.",
-            checkbox: "I have read and accept the Privacy Notice.",
-            button: "Continue to WhatsApp",
-            privacyLink: "Privacy Notice"
-        },
-        de: {
-            welcome: "Willkommen im Seamelia Beach Resort. Unser Guest Relations Team hilft Ihnen gerne während Ihres Aufenthalts.",
-            checkbox: "Ich habe die Datenschutzerklärung gelesen und akzeptiere sie.",
-            button: "Weiter zu WhatsApp",
-            privacyLink: "Datenschutzerklärung"
-        },
-        ru: {
-            welcome: "Добро пожаловать в Seamelia Beach Resort. Служба Guest Relations всегда готова помочь вам во время вашего пребывания.",
-            checkbox: "Я ознакомился(ась) с Политикой конфиденциальности и принимаю её.",
-            button: "Перейти в WhatsApp",
-            privacyLink: "Политика конфиденциальности"
-        }
-    };
-
-    /**
-     * Identifies user browser language and normalizes it to supported list
-     * @returns {string} Supported language key code
-     */
-    function detectLanguage() {
-        const browserLang = navigator.language || (navigator.languages && navigator.languages[0]) || CONFIG.fallbackLang;
-        const shortLang = browserLang.toLowerCase().split('-')[0];
-        
-        return dictionary.hasOwnProperty(shortLang) ? shortLang : CONFIG.fallbackLang;
+// 4 Dildeki Karşılama Metinleri Sözlüğü
+const translations = {
+    tr: {
+        welcome: "Seamelia Beach Resort & Spa'ya Hoş Geldiniz",
+        subtitle: "Hizmetlerimize hızlıca ulaşmak ve bizimle WhatsApp üzerinden iletişime geçmek için lütfen bilgilerinizi giriniz.",
+        roomLabel: "Oda Numarası",
+        roomPlaceholder: "Örn: 1402",
+        button: "WhatsApp Concierge'a Bağlan",
+        privacyText: "Kişisel verilerinizin işlenmesine ilişkin Aydınlatma Metni'ni okudum ve kabul ediyorum.",
+        privacyLink: "Aydınlatma Metni"
+    },
+    en: {
+        welcome: "Welcome to Seamelia Beach Resort & Spa",
+        subtitle: "Please enter your information to quickly access our services and contact us via WhatsApp.",
+        roomLabel: "Room Number",
+        roomPlaceholder: "E.g.: 1402",
+        button: "Connect to WhatsApp Concierge",
+        privacyText: "I have read and accept the Clarification Text regarding the processing of personal data.",
+        privacyLink: "Clarification Text"
+    },
+    de: {
+        welcome: "Willkommen im Seamelia Beach Resort & Spa",
+        subtitle: "Bitte geben Sie Ihre Daten ein, um schnell auf unsere Dienste zuzugreifen und uns per WhatsApp zu kontaktieren.",
+        roomLabel: "Zimmernummer",
+        roomPlaceholder: "Z.B.: 1402",
+        button: "Mit WhatsApp Concierge verbinden",
+        privacyText: "Ich habe den Aufklärungstext zur Verarbeitung personenbezogener Daten gelesen und akzeptiere ihn.",
+        privacyLink: "Aufklärungstext"
+    },
+    ru: {
+        welcome: "Добро пожаловать в Seamelia Beach Resort & Spa",
+        subtitle: "Пожалуйста, введите свои данные, чтобы быстро получить доступ к нашим услугам и связаться с нами через WhatsApp.",
+        roomLabel: "Номер комнаты",
+        roomPlaceholder: "Напр: 1402",
+        button: "Подключиться к WhatsApp Concierge",
+        privacyText: "Я прочитал и принимаю Разъяснительный текст касательно обработки персональных данных.",
+        privacyLink: "Разъяснительный текст"
     }
+};
 
-    /**
-     * Render the localized strings safely into the DOM hierarchy
-     */
-    function renderLocalization() {
-        const activeLang = detectLanguage();
-        
-        // Dynamically set HTML Lang attribute for assistive screen-readers
-        document.documentElement.lang = activeLang;
+// Dili Değiştiren Fonksiyon
+function setLanguage(lang) {
+    document.getElementById('welcome-title').textContent = translations[lang].welcome;
+    document.getElementById('welcome-subtitle').textContent = translations[lang].subtitle;
+    document.getElementById('room-label').textContent = translations[lang].roomLabel;
+    document.getElementById('room-input').placeholder = translations[lang].roomPlaceholder;
+    document.getElementById('submit-btn').textContent = translations[lang].button;
+    document.getElementById('privacy-link').textContent = translations[lang].privacyLink;
+    
+    // Checkbox yanındaki düz metni güncelleme
+    const privacyLabel = document.getElementById('privacy-label');
+    privacyLabel.childNodes[2].textContent = " " + translations[lang].privacyText;
 
-        // Extract translation bundle
-        const localizedStrings = dictionary[activeLang];
+    // Aktif buton görselini güncelleme
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+    const activeBtn = document.getElementById(`btn-${lang}`);
+    if (activeBtn) activeBtn.classList.add('active');
+}
 
-        // Safe DOM Text Injections
-        document.getElementById('welcome-text').textContent = localizedStrings.welcome;
-        document.getElementById('checkbox-label').textContent = localizedStrings.checkbox;
-        document.getElementById('button-text').textContent = localizedStrings.button;
-        document.getElementById('footer-privacy-link').textContent = localizedStrings.privacyLink;
+// Sayfa Açıldığında Dil Algılama Mekanizması
+window.addEventListener('DOMContentLoaded', () => {
+    // Tarayıcı / Telefon dilini al (Örn: tr-TR, en-US, de-DE)
+    const userLang = (navigator.language || navigator.userLanguage).toLowerCase();
+    
+    let defaultLang = 'en'; // VARYAYILAN: Desteklenmeyen tüm dillerde direkt İNGİLİZCE açılacak.
+    
+    if (userLang.startsWith('tr')) {
+        defaultLang = 'tr'; // Telefon Türkçeyse Türkçe açılır
+    } else if (userLang.startsWith('de')) {
+        defaultLang = 'de'; // Telefon Almancaysa Almanca açılır
+    } else if (userLang.startsWith('ru')) {
+        defaultLang = 'ru'; // Telefon Rusçaysa Rusça açılır
     }
-
-    /**
-     * Form and Event Lifecycle Listeners
-     */
-    function initializeInteractions() {
-        const consentCheckbox = document.getElementById('privacy-consent');
-        const submitButton = document.getElementById('whatsapp-submit-btn');
-
-        // Checkbox status alteration controller
-        consentCheckbox.addEventListener('change', (e) => {
-            const isChecked = e.target.checked;
-            submitButton.disabled = !isChecked;
-            
-            // Modern visual state feedback adjustment via dynamic accessibility tags
-            submitButton.setAttribute('aria-disabled', (!isChecked).toString());
-        });
-
-        // Trigger safe dynamic gateway connection window redirect
-        submitButton.addEventListener('click', () => {
-            if (consentCheckbox.checked) {
-                window.location.href = CONFIG.targetUrl;
-            }
-        });
-    }
-
-    // Engine Execution Callbacks
-    renderLocalization();
-    initializeInteractions();
+    
+    // Belirlenen dili yükle
+    setLanguage(defaultLang);
 });
+
+// Form Gönderildiğinde WhatsApp'a Yönlendirme Fonksiyonu
+function redirectToWhatsApp(event) {
+    event.preventDefault();
+    const roomNumber = document.getElementById('room-input').value;
+    const privacyChecked = document.getElementById('privacy-checkbox').checked;
+    
+    if (!privacyChecked) {
+        alert("Lütfen Aydınlatma Metni'ni onaylayın. / Please accept the Clarification Text.");
+        return;
+    }
+    
+    // Otelinizin resmi Guest Relations WhatsApp numarası (Uluslararası formatta, örn: 905xxxxxxxxx)
+    const phoneNumber = "905000000000"; 
+    const message = `Merhaba Seamelia Concierge, Oda Numaram: ${roomNumber}. Yardımcı olabilir misiniz?`;
+    
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.location.href = whatsappUrl;
+}
