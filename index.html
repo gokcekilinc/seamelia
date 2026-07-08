@@ -63,20 +63,42 @@
             color: #ffffff;
         }
 
-        /* Güvenli Logo Tasarımı (Çökme ve Boyut Kaybı Engellendi) */
+        /* Güvenli Logo Alanı */
         .logo-container {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             text-align: center;
             display: block;
             width: 100%;
+            min-height: 60px;
         }
 
         .logo-container img {
-            width: 130px; /* Genişlik sabitlenerek 0x0 görünme hatası çözüldü */
+            width: 130px;
             max-width: 100%;
             height: auto;
             display: inline-block;
             object-fit: contain;
+        }
+
+        /* Dosya Bozuksa Devreye Girecek Yedek Lüks Yazı Logo Stili */
+        .logo-text-fallback {
+            display: none; /* Varsayılan olarak gizli, resim bozuksa JS ile açılacak */
+            font-family: 'Times New Roman', Times, serif;
+            color: #bc9c6c;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 4px;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        .logo-text-fallback span {
+            display: block;
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: #a38456;
+            margin-top: 4px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
         }
 
         h1 {
@@ -217,9 +239,13 @@
             <button type="button" id="btn-ru" class="lang-btn" onclick="setLanguage('ru')">RU</button>
         </div>
 
-        <!-- Logo Alanı -->
+        <!-- Logo Alanı (onerror eklendi: resim bozuksa otomatik kurtarma devreye girer) -->
         <div class="logo-container">
-            <img src="logo.png" alt="Seamelia Beach Resort Logo">
+            <img src="logo.png" alt="Seamelia Beach Resort Logo" id="main-logo-img" onerror="this.style.display='none'; document.getElementById('logo-text-backup').style.display='block';">
+            <div id="logo-text-backup" class="logo-text-fallback">
+                SEAMELIA
+                <span>BEACH RESORT & SPA</span>
+            </div>
         </div>
 
         <!-- Dinamik Başlıklar -->
