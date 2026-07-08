@@ -7,6 +7,8 @@
     <style>
         /* Küresel Sıfırlama ve Güvenli Kutu Modeli */
         *, *::before, *::after {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
             box-sizing: border-box;
         }
         
@@ -19,17 +21,15 @@
 
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            text-align: center;
         }
 
+        /* Garantili Ortalanmış Kart Yapısı */
         .card {
             background-color: #ffffff;
-            width: 100%;
+            width: 90%;
             max-width: 420px;
-            margin: 20px;
+            margin: 40px auto;
             padding: 35px 25px;
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
@@ -63,20 +63,19 @@
             color: #ffffff;
         }
 
-        /* Logo Tasarımı */
+        /* Güvenli Logo Tasarımı (Çökme ve Boyut Kaybı Engellendi) */
         .logo-container {
             margin-bottom: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            text-align: center;
+            display: block;
+            width: 100%;
         }
 
         .logo-container img {
-            max-width: 130px;
-            max-height: 130px;
-            width: auto;
+            width: 130px; /* Genişlik sabitlenerek 0x0 görünme hatası çözüldü */
+            max-width: 100%;
             height: auto;
-            display: block;
+            display: inline-block;
             object-fit: contain;
         }
 
@@ -224,15 +223,15 @@
         </div>
 
         <!-- Dinamik Başlıklar -->
-        <h1 id="welcome-title">Seamelia Beach Resort & Spa</h1>
-        <p id="welcome-subtitle">...</p>
+        <h1 id="welcome-title">Seamelia Beach Resort & Spa'ya Hoş Geldiniz</h1>
+        <p id="welcome-subtitle">Hizmetlerimize hızlıca ulaşmak ve bizimle WhatsApp üzerinden iletişime geçmek için lütfen bilgilerinizi giriniz.</p>
 
         <!-- Giriş Formu -->
         <form onsubmit="redirectToWhatsApp(event)">
             
             <div class="form-group">
                 <label id="room-label" for="room-input">Oda Numarası</label>
-                <input type="text" id="room-input" required>
+                <input type="text" id="room-input" placeholder="Örn: 1402" required>
             </div>
 
             <!-- Working Hours Section -->
@@ -240,7 +239,7 @@
                 <span class="icon">🕘</span>
                 <div>
                     <strong id="working-hours-title">Çalışma Saatleri</strong>
-                    <small id="working-hours-text">...</small>
+                    <small id="working-hours-text">Misafir İlişkileri ekibimiz her gün <b>09:00 - 16:00</b> saatleri arasında hizmetinizdedir.<br>Bu saatlerin dışında da WhatsApp mesajı gönderebilirsiniz. En kısa sürede yanıtlanacaktır.</small>
                 </div>
             </div>
 
@@ -248,20 +247,20 @@
             <div class="privacy-group">
                 <input type="checkbox" id="privacy-checkbox" required>
                 <span class="privacy-text">
-                    <span id="privacy-main-text">...</span>
-                    <a href="privacy.html" id="privacy-link" target="_blank">...</a>
+                    <span id="privacy-main-text">Kişisel verilerinizin işlenmesine ilişkin </span>
+                    <a href="privacy.html" id="privacy-link" target="_blank">Aydınlatma Metni'ni okudum ve kabul ediyorum.</a>
                 </span>
             </div>
 
             <!-- Gönderim Butonu -->
-            <button type="submit" id="submit-btn" class="submit-btn">...</button>
+            <button type="submit" id="submit-btn" class="submit-btn">WhatsApp Concierge'a Bağlan</button>
 
         </form>
     </div>
 
-    <!-- Akıllı Dil Algılama ve Yönetim Motoru -->
+    <!-- %100 Uyumlu Evrensel Dil Motoru (ES5 Standartlarında) -->
     <script>
-        const translations = {
+        var translations = {
             tr: {
                 welcome: "Seamelia Beach Resort & Spa'ya Hoş Geldiniz",
                 subtitle: "Hizmetlerimize hızlıca ulaşmak ve bizimle WhatsApp üzerinden iletişime geçmek için lütfen bilgilerinizi giriniz.",
@@ -310,70 +309,89 @@
 
         function setLanguage(lang) {
             try {
-                // Dil paketinin varlığını doğrula, yoksa varsayılan olarak İngilizce seç
-                const targetTranslation = translations[lang] || translations['en'];
+                var data = translations[lang] || translations['en'];
                 
-                // Element haritası (Güvenli DOM Manipülasyonu)
-                const elements = {
-                    'welcome-title': { prop: 'textContent', val: targetTranslation.welcome },
-                    'welcome-subtitle': { prop: 'textContent', val: targetTranslation.subtitle },
-                    'room-label': { prop: 'textContent', val: targetTranslation.roomLabel },
-                    'room-input': { prop: 'placeholder', val: targetTranslation.roomPlaceholder },
-                    'submit-btn': { prop: 'textContent', val: targetTranslation.button },
-                    'privacy-main-text': { prop: 'textContent', val: targetTranslation.privacyText },
-                    'privacy-link': { prop: 'textContent', val: targetTranslation.privacyLink },
-                    'working-hours-title': { prop: 'textContent', val: targetTranslation.workingHoursTitle },
-                    'working-hours-text': { prop: 'innerHTML', val: targetTranslation.workingHoursText }
-                };
+                var welcomeTitle = document.getElementById('welcome-title');
+                if (welcomeTitle) welcomeTitle.textContent = data.welcome;
 
-                // Tüm elementleri güvenli bir şekilde döngüyle güncelle (Biri eksik olsa bile kod patlamaz)
-                for (const [id, target] of Object.entries(elements)) {
-                    const el = document.getElementById(id);
-                    if (el) {
-                        el[target.prop] = target.val;
-                    }
-                }
+                var welcomeSubtitle = document.getElementById('welcome-subtitle');
+                if (welcomeSubtitle) welcomeSubtitle.textContent = data.subtitle;
+
+                var roomLabel = document.getElementById('room-label');
+                if (roomLabel) roomLabel.textContent = data.roomLabel;
+
+                var roomInput = document.getElementById('room-input');
+                if (roomInput) roomInput.placeholder = data.roomPlaceholder;
+
+                var submitBtn = document.getElementById('submit-btn');
+                if (submitBtn) submitBtn.textContent = data.button;
+
+                var privacyMainText = document.getElementById('privacy-main-text');
+                if (privacyMainText) privacyMainText.textContent = data.privacyText;
+
+                var privacyLink = document.getElementById('privacy-link');
+                if (privacyLink) privacyLink.textContent = data.privacyLink;
+
+                var workingHoursTitle = document.getElementById('working-hours-title');
+                if (workingHoursTitle) workingHoursTitle.textContent = data.workingHoursTitle;
+
+                var workingHoursText = document.getElementById('working-hours-text');
+                if (workingHoursText) workingHoursText.innerHTML = data.workingHoursText;
                 
-                // Aktif dil butonunun rengini güncelleme işlemini güvenli hale getir
-                document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-                const activeBtn = document.getElementById(`btn-${lang}`);
+                var buttons = document.getElementsByClassName('lang-btn');
+                for (var i = 0; i < buttons.length; i++) {
+                    buttons[i].className = 'lang-btn';
+                }
+                var activeBtn = document.getElementById('btn-' + lang);
                 if (activeBtn) {
-                    activeBtn.classList.add('active');
+                    activeBtn.className = 'lang-btn active';
                 }
             } catch (error) {
-                console.error("Dil yükleme hatası güvenli şekilde atlatıldı:", error);
+                console.log("Dil secimi hatasiz atlatildi.");
             }
         }
 
-        // Akıllı Dil Algılama Motoru (Tamamen Hata Korumalı)
-        window.addEventListener('DOMContentLoaded', () => {
-            let defaultLang = 'en'; // Güvenli liman fallback
+        function initLanguage() {
+            var defaultLang = 'en';
             try {
-                const systemLang = navigator.language || navigator.userLanguage || 'en';
-                const userLang = systemLang.toLowerCase();
+                var systemLang = navigator.language || navigator.userLanguage || 'en';
+                var userLang = systemLang.toLowerCase();
                 
-                if (userLang.startsWith('tr')) {
+                if (userLang.indexOf('tr') === 0) {
                     defaultLang = 'tr';
-                } else if (userLang.startsWith('de')) {
+                } else if (userLang.indexOf('de') === 0) {
                     defaultLang = 'de';
-                } else if (userLang.startsWith('ru')) {
+                } else if (userLang.indexOf('ru') === 0) {
                     defaultLang = 'ru';
                 }
             } catch (e) {
-                console.error("Sistem dili okunurken hata oluştu, varsayılan dile geçildi:", e);
+                console.log("Sistem dili okunurken hata olustu, İngilizceye donuldu.");
+            }
+            setLanguage(defaultLang);
+        }
+
+        if (window.addEventListener) {
+            window.addEventListener('DOMContentLoaded', initLanguage, false);
+        } else if (window.attachEvent) {
+            window.attachEvent('onload', initLanguage);
+        } else {
+            window.onload = initLanguage;
+        }
+
+        function redirectToWhatsApp(event) {
+            if (event && event.preventDefault) {
+                event.preventDefault();
+            } else {
+                window.event.returnValue = false;
             }
             
-            setLanguage(defaultLang);
-        });
-
-        // Form Gönderildiğinde Çalışacak WhatsApp Yönlendirmesi
-        function redirectToWhatsApp(event) {
-            event.preventDefault();
-            const roomNumber = document.getElementById('room-input').value;
-            const phoneNumber = "905309756982"; 
-            const message = `Seamelia Concierge - Room/Oda: ${roomNumber}`;
+            var roomInput = document.getElementById('room-input');
+            var roomNumber = roomInput ? roomInput.value : '';
+            var phoneNumber = "905309756982"; 
+            var message = "Seamelia Concierge - Room/Oda: " + roomNumber;
             
-            window.location.href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.location.href = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+            return false;
         }
     </script>
 </body>
