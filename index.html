@@ -5,35 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seamelia Beach Resort & Spa - WhatsApp Concierge</title>
     <style>
-        /* Lüks ve Kurumsal Otel Teması Tasarımı */
-        body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: #fcfbf7; /* Şık krem arka plan */
+        /* Küresel Sıfırlama ve Güvenli Kutu Modeli */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            width: 100%;
             margin: 0;
             padding: 0;
+            background-color: #fcfbf7; /* Şık krem arka plan */
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-        }
-
-        /* 24/7 Banner */
-        .banner-24-7 {
-            background: linear-gradient(135deg, #bc9c6c 0%, #a38456 100%);
-            color: #ffffff;
-            padding: 12px 20px;
-            text-align: center;
-            font-size: 13px;
-            font-weight: 600;
-            line-height: 1.5;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(188, 156, 108, 0.2);
-        }
-
-        .banner-24-7 .icon {
-            font-size: 16px;
-            margin-right: 6px;
         }
 
         .card {
@@ -46,7 +35,6 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
             border: 1px solid #f4efe2;
             text-align: center;
-            box-sizing: border-box;
         }
 
         /* Dil Seçim Butonları Alanı */
@@ -128,7 +116,6 @@
             border-radius: 8px;
             font-size: 15px;
             background-color: #faf8f2;
-            box-sizing: border-box;
             outline: none;
             transition: border-color 0.2s;
         }
@@ -174,11 +161,6 @@
             display: block;
         }
 
-        .working-hours small b {
-            color: #333;
-            font-weight: 600;
-        }
-
         /* KVKK Onay Kutusu Alanı */
         .privacy-group {
             display: flex;
@@ -208,5 +190,191 @@
 
         /* Bağlan Butonu */
         .submit-btn {
-            background-color: #bc
+            background-color: #bc9c6c;
+            color: #ffffff;
+            border: none;
+            width: 100%;
+            padding: 14px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
 
+        .submit-btn:hover {
+            background-color: #a38456;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="card">
+        <!-- Üst Kısım: Dil Seçenekleri -->
+        <div class="lang-selector">
+            <button type="button" id="btn-tr" class="lang-btn" onclick="setLanguage('tr')">TR</button>
+            <button type="button" id="btn-en" class="lang-btn" onclick="setLanguage('en')">EN</button>
+            <button type="button" id="btn-de" class="lang-btn" onclick="setLanguage('de')">DE</button>
+            <button type="button" id="btn-ru" class="lang-btn" onclick="setLanguage('ru')">RU</button>
+        </div>
+
+        <!-- Logo Alanı -->
+        <div class="logo-container">
+            <img src="logo.png" alt="Seamelia Beach Resort Logo">
+        </div>
+
+        <!-- Dinamik Başlıklar -->
+        <h1 id="welcome-title">Seamelia Beach Resort & Spa</h1>
+        <p id="welcome-subtitle">...</p>
+
+        <!-- Giriş Formu -->
+        <form onsubmit="redirectToWhatsApp(event)">
+            
+            <div class="form-group">
+                <label id="room-label" for="room-input">Oda Numarası</label>
+                <input type="text" id="room-input" required>
+            </div>
+
+            <!-- Working Hours Section -->
+            <div class="working-hours">
+                <span class="icon">🕘</span>
+                <div>
+                    <strong id="working-hours-title">Çalışma Saatleri</strong>
+                    <small id="working-hours-text">...</small>
+                </div>
+            </div>
+
+            <!-- KVKK Onay Kutusu ve Linki -->
+            <div class="privacy-group">
+                <input type="checkbox" id="privacy-checkbox" required>
+                <span class="privacy-text">
+                    <span id="privacy-main-text">...</span>
+                    <a href="privacy.html" id="privacy-link" target="_blank">...</a>
+                </span>
+            </div>
+
+            <!-- Gönderim Butonu -->
+            <button type="submit" id="submit-btn" class="submit-btn">...</button>
+
+        </form>
+    </div>
+
+    <!-- Akıllı Dil Algılama ve Yönetim Motoru -->
+    <script>
+        const translations = {
+            tr: {
+                welcome: "Seamelia Beach Resort & Spa'ya Hoş Geldiniz",
+                subtitle: "Hizmetlerimize hızlıca ulaşmak ve bizimle WhatsApp üzerinden iletişime geçmek için lütfen bilgilerinizi giriniz.",
+                roomLabel: "Oda Numarası",
+                roomPlaceholder: "Örn: 1402",
+                button: "WhatsApp Concierge'a Bağlan",
+                privacyText: "Kişisel verilerinizin işlenmesine ilişkin ",
+                privacyLink: "Aydınlatma Metni'ni okudum ve kabul ediyorum.",
+                workingHoursTitle: "Çalışma Saatleri",
+                workingHoursText: "Misafir İlişkileri ekibimiz her gün <b>09:00 - 16:00</b> saatleri arasında hizmetinizdedir.<br>Bu saatlerin dışında da WhatsApp mesajı gönderebilirsiniz. En kısa sürede yanıtlanacaktır."
+            },
+            en: {
+                welcome: "Welcome to Seamelia Beach Resort & Spa",
+                subtitle: "Please enter your information to quickly access our services and contact us via WhatsApp.",
+                roomLabel: "Room Number",
+                roomPlaceholder: "E.g.: 1402",
+                button: "Connect to WhatsApp Concierge",
+                privacyText: "I have read and accept the ",
+                privacyLink: "Clarification Text regarding data processing.",
+                workingHoursTitle: "Guest Relations Working Hours",
+                workingHoursText: "Our Guest Relations team is available daily from <b>09:00 - 16:00</b>.<br>Outside these hours, you can still send us a WhatsApp message. We will reply as soon as possible."
+            },
+            de: {
+                welcome: "Willkommen im Seamelia Beach Resort & Spa",
+                subtitle: "Bitte geben Sie Ihre Daten ein, um schnell auf unsere Dienste zuzugreifen und uns per WhatsApp zu kontaktieren.",
+                roomLabel: "Zimmernummer",
+                roomPlaceholder: "Z.B.: 1402",
+                button: "Mit WhatsApp Concierge verbinden",
+                privacyText: "Ich habe den ",
+                privacyLink: "Aufklärungstext zur Datenverarbeitung gelesen und akzeptiere ihn.",
+                workingHoursTitle: "Öffnungszeiten der Gästebetreuung",
+                workingHoursText: "Unser Gästeservice-Team ist täglich von <b>09:00 - 16:00</b> Uhr für Sie erreichbar.<br>Außerhalb dieser Zeiten können Sie uns auch eine WhatsApp-Nachricht senden. Wir antworten schnellstmöglich."
+            },
+            ru: {
+                welcome: "Добро пожаловать в Seamelia Beach Resort & Spa",
+                subtitle: "Пожалуйста, введите свои данные, чтобы быстро получить доступ к нашим услугам и связаться с нами через WhatsApp.",
+                roomLabel: "Номер комнаты",
+                roomPlaceholder: "Напр: 1402",
+                button: "Подключиться к WhatsApp Concierge",
+                privacyText: "Я прочитал и принимаю ",
+                privacyLink: "Разъяснительный текст касательно обработки данных.",
+                workingHoursTitle: "Время работы отдела обслуживания гостей",
+                workingHoursText: "Наша команда по обслуживанию гостей работает ежедневно с <b>09:00 до 16:00</b>.<br>В остальное время вы можете отправить нам сообщение в WhatsApp. Мы ответим как можно скорее."
+            }
+        };
+
+        function setLanguage(lang) {
+            try {
+                // Dil paketinin varlığını doğrula, yoksa varsayılan olarak İngilizce seç
+                const targetTranslation = translations[lang] || translations['en'];
+                
+                // Element haritası (Güvenli DOM Manipülasyonu)
+                const elements = {
+                    'welcome-title': { prop: 'textContent', val: targetTranslation.welcome },
+                    'welcome-subtitle': { prop: 'textContent', val: targetTranslation.subtitle },
+                    'room-label': { prop: 'textContent', val: targetTranslation.roomLabel },
+                    'room-input': { prop: 'placeholder', val: targetTranslation.roomPlaceholder },
+                    'submit-btn': { prop: 'textContent', val: targetTranslation.button },
+                    'privacy-main-text': { prop: 'textContent', val: targetTranslation.privacyText },
+                    'privacy-link': { prop: 'textContent', val: targetTranslation.privacyLink },
+                    'working-hours-title': { prop: 'textContent', val: targetTranslation.workingHoursTitle },
+                    'working-hours-text': { prop: 'innerHTML', val: targetTranslation.workingHoursText }
+                };
+
+                // Tüm elementleri güvenli bir şekilde döngüyle güncelle (Biri eksik olsa bile kod patlamaz)
+                for (const [id, target] of Object.entries(elements)) {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        el[target.prop] = target.val;
+                    }
+                }
+                
+                // Aktif dil butonunun rengini güncelleme işlemini güvenli hale getir
+                document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+                const activeBtn = document.getElementById(`btn-${lang}`);
+                if (activeBtn) {
+                    activeBtn.classList.add('active');
+                }
+            } catch (error) {
+                console.error("Dil yükleme hatası güvenli şekilde atlatıldı:", error);
+            }
+        }
+
+        // Akıllı Dil Algılama Motoru (Tamamen Hata Korumalı)
+        window.addEventListener('DOMContentLoaded', () => {
+            let defaultLang = 'en'; // Güvenli liman fallback
+            try {
+                const systemLang = navigator.language || navigator.userLanguage || 'en';
+                const userLang = systemLang.toLowerCase();
+                
+                if (userLang.startsWith('tr')) {
+                    defaultLang = 'tr';
+                } else if (userLang.startsWith('de')) {
+                    defaultLang = 'de';
+                } else if (userLang.startsWith('ru')) {
+                    defaultLang = 'ru';
+                }
+            } catch (e) {
+                console.error("Sistem dili okunurken hata oluştu, varsayılan dile geçildi:", e);
+            }
+            
+            setLanguage(defaultLang);
+        });
+
+        // Form Gönderildiğinde Çalışacak WhatsApp Yönlendirmesi
+        function redirectToWhatsApp(event) {
+            event.preventDefault();
+            const roomNumber = document.getElementById('room-input').value;
+            const phoneNumber = "905309756982"; 
+            const message = `Seamelia Concierge - Room/Oda: ${roomNumber}`;
+            
+            window.location.href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        }
+    </script>
+</body>
+</html>
