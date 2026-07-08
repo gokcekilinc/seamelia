@@ -1,144 +1,223 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, follow">
-    <title>Privacy Notice | Seamelia Beach Resort</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>KVKK Aydınlatma Metni - Seamelia Beach Resort</title>
     <style>
-        /* Contextual layout updates specifically for clean textual reading */
-        .concierge-card {
-            max-width: 600px;
-            text-align: left;
-            padding: 45px 35px;
-        }
-        .privacy-section {
-            margin-bottom: 25px;
-            border-bottom: 1px solid rgba(185, 151, 91, 0.1);
-            padding-bottom: 20px;
-        }
-        .privacy-section:last-of-type {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-        .lang-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 18px;
-            color: var(--gold-dark);
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-        .privacy-text {
-            font-size: 13.5px;
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #fcfbf7;
+            color: #333333;
             line-height: 1.6;
-            color: var(--text-muted);
+            margin: 0;
+            padding: 0;
         }
-        .privacy-text ul {
-            margin-top: 8px;
-            padding-left: 20px;
+        .navbar {
+            background-color: #ffffff;
+            padding: 15px 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        .privacy-text li {
-            margin-bottom: 4px;
-        }
-        .back-btn-container {
-            margin-top: 35px;
-        }
-        .back-link {
+        .back-btn {
+            text-decoration: none;
+            color: #bc9c6c;
+            font-weight: bold;
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 8px;
-            color: var(--gold);
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 1px solid rgba(185, 151, 91, 0.4);
-            padding: 12px 24px;
-            border-radius: var(--radius-button);
-            width: 100%;
-            transition: var(--transition-smooth);
-            background: transparent;
-            cursor: pointer;
+            font-size: 14px;
+            border: 1px solid #bc9c6c;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
         }
-        .back-link:hover {
-            background-color: var(--gold);
-            color: var(--white);
-            border-color: var(--gold);
-            transform: translateY(-1px);
+        .back-btn:hover {
+            background-color: #bc9c6c;
+            color: #ffffff;
+        }
+        .lang-tabs {
+            display: flex;
+            gap: 8px;
+        }
+        .tab-btn {
+            background: #ffffff;
+            border: 1px solid #eaeaea;
+            padding: 6px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .tab-btn.active {
+            background-color: #bc9c6c;
+            color: white;
+            border-color: #bc9c6c;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border: 1px solid #eaeaea;
+        }
+        h1 {
+            color: #bc9c6c;
+            font-size: 20px;
+            border-bottom: 2px solid #f4efe2;
+            padding-bottom: 10px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        h1:first-of-type {
+            margin-top: 0;
+        }
+        p {
+            font-size: 15px;
+            text-align: justify;
+            margin-bottom: 15px;
+            color: #4a4a4a;
+        }
+        .address-box {
+            background-color: #faf8f2;
+            border-left: 3px solid #bc9c6c;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+            font-size: 14px;
+        }
+        .lang-content {
+            display: none;
+        }
+        .lang-content.active {
+            display: block;
         }
     </style>
 </head>
 <body>
 
-    <div class="background-overlay" aria-hidden="true"></div>
+    <div class="navbar">
+        <a href="index.html" class="back-btn">← Geri Dön / Back</a>
+        <div class="lang-tabs">
+            <button class="tab-btn active" onclick="switchLang('tr')">TR</button>
+            <button class="tab-btn" onclick="switchLang('en')">EN</button>
+            <button class="tab-btn" onclick="switchLang('de')">DE</button>
+            <button class="tab-btn" onclick="switchLang('ru')">RU</button>
+        </div>
+    </div>
 
-    <main class="concierge-container" style="max-width: 600px;">
-        <article class="concierge-card">
-            <header class="concierge-header" style="text-align: center; margin-bottom: 35px;">
-                <h1 class="title" style="font-size: 28px;">Privacy Notice</h1>
-                <p class="subtitle">Datenschutz • Конфиденциальность</p>
-                <div class="gold-divider" aria-hidden="true"></div>
-            </header>
-
-            <div class="privacy-content">
-                <section class="privacy-section" lang="en">
-                    <h2 class="lang-title">English</h2>
-                    <div class="privacy-text">
-                        <p>By using our WhatsApp Digital Concierge service, you acknowledge and agree that:</p>
-                        <ul>
-                            <li>Your phone number and messages will be processed exclusively by the Seamelia Beach Resort Guest Relations team to answer your inquiries and requests during your stay.</li>
-                            <li>No promotional materials or marketing messages will ever be sent to your phone number.</li>
-                            <li>Your data will not be shared with any third party under any circumstances.</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section class="privacy-section" lang="de">
-                    <h2 class="lang-title">Deutsch</h2>
-                    <div class="privacy-text">
-                        <p>Durch die Nutzung unseres digitalen WhatsApp-Concierge-Service erklären Sie sich mit Folgendem einverstanden:</p>
-                        <ul>
-                            <li>Ihre Telefonnummer und Nachrichten werden ausschließlich vom Guest Relations Team des Seamelia Beach Resorts verarbeitet, um Ihre Anfragen während Ihres Aufenthalts zu beantworten.</li>
-                            <li>Es werden keinerlei Werbe- oder Marketingnachrichten an Ihre Telefonnummer gesendet.</li>
-                            <li>Ihre Daten werden unter keinen Umständen an Dritte weitergegeben.</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section class="privacy-section" lang="ru">
-                    <h2 class="lang-title">Русский</h2>
-                    <div class="privacy-text">
-                        <p>Используя нашу службу цифрового консьержа в WhatsApp, вы подтверждаете и соглашаетесь со следующими условиями:</p>
-                        <ul>
-                            <li>Ваш номер телефона и сообщения будут обрабатываться исключительно службой Guest Relations отеля Seamelia Beach Resort для ответа на ваши запросы во время вашего пребывания.</li>
-                            <li>На ваш номер телефона никогда не будут отправляться рекламные или маркетинговые сообщения.</li>
-                            <li>Ваши данные ни при каких обстоятельствах не будут переданы третьим лицам.</li>
-                        </ul>
-                    </div>
-                </section>
+    <div class="container">
+        
+        <div id="lang-tr" class="lang-content active">
+            <h1>Misafir İnternet Kullanımında İşlenen Kişisel Verilere İlişkin Aydınlatma Metni</h1>
+            <p>Bu aydınlatma metni, 6698 sayılı Kişisel Verilerin Korunması Kanununun 10. maddesi ile Aydınlatma Yükümlülüğünün Yerine Getirilmesinde Uyulacak Usul ve Esaslar Hakkında Tebliğ kapsamında veri sorumlusu sıfatıyla internet kullanımı için doldurulan hotspot kullanıcı paneli hakkında Mutlular Otelcilik Ticaret Tarım ve İnşaat Anonim Şirketi tarafından hazırlanmıştır.</p>
+            <p>İnternet kullanımı için doldurulan hotspot kullanıcı paneli aracılığıyla paylaştığınız Oda numarası, doğum tarihiniz ve internet kullanımına dair trafik bilgileriniz ile sınırlı olan kişisel verileriniz, sunulan internet hizmetinde veri sorumlusunun güvenliğinin sağlanabilmesi ve 5651 sayılı kanun gereği trafik bilgilerinin kayıt edilmesinin zorunluluğunu yerine getirmek amacıyla işlenmektedir.</p>
+            <p>Söz konusu kişisel veriler, KVKK’nın 5. maddesinde yer alan, “kanunlarda açıkça öngörülmesi” ve “ilgili kişinin temel hak och özgürlüklerine zarar vermemek kaydıyla veri sorumlusunun meşru menfaati için zorunlu olması” hukuki sebeplerine dayanarak otomatik yolla işlenmektedir. Bu kişisel verileriniz yetkili kamu kurum ve kuruluşlarla paylaşılacaktır.</p>
+            <p>Kanunun ilgili kişinin haklarını düzenleyen 11. maddesi kapsamındaki taleplerinizi, “Veri Sorumlusuna Başvuru Usul ve Esasları Hakkında Tebliğe” Madde 5’e göre:</p>
+            <div class="address-box">
+                <strong>Yazılı Başvuru Adresi:</strong> Kızılağaç Mahallesi No:221 Manavgat / ANTALYA<br><br>
+                <strong>E-Posta Adresi:</strong> account@sunmeliabeachresort.com
             </div>
 
-            <div class="back-btn-container">
-                <a href="index.html" class="back-link" aria-label="Go back to home page">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <line x1="19" y1="12" x2="5" y2="12"></line>
-                        <polyline points="12 19 5 12 12 5"></polyline>
-                    </svg>
-                    <span>Back / Zurück / Назад</span>
-                </a>
+            <h1>E-Bülten Formu’nda İşlenen Kişisel Verilere İlişkin Aydınlatma Metni</h1>
+            <p>İşbu Aydınlatma Metni, veri sorumlusu sıfatıyla hareket eden Mutlular Otelcilik Ticaret Tarım ve İnşaat Anonim Şirketi tarafından, 6698 sayılı Kişisel Verilerin Korunması Kanunu’nun (“KVKK”) 10. maddesi ile Aydınlatma Yükümlülüğünün Yerine Getirilmesinde Uyulacak Usul ve Esaslar Hakkında Tebliğ çerçevesinde, kişisel verilerinizin işlenme amaçları, hukuki nedenleri, toplanma yöntemi, kimlere aktarılabileceği ve KVKK kapsamındaki haklarınız konularına ilişkin olarak sizleri bilgilendirmek amacıyla hazırlanmıştır.</p>
+            <p>İnternet sitemizdeki E-Bülten Formu aracılığıyla paylaştığınız e-posta adresi kişisel veriniz, şirketimiz tarafından sunulan ürün ve hizmetlerden ilgili kişileri faydalandırmak için gerekli çalışmaların iş birimleri tarafından yapılması, ilgili iş süreçlerinin yürütülmesi, reklam ve kampanya faaliyetleri kapsamında ticari elektronik ileti gönderilebilmesi amaçlarıyla işlenmektedir.</p>
+            <p>Söz konusu kişisel veriler, KVKK’nın 5. maddesinde yer alan “bir sözleşmenin kurulması veya ifasıyla doğrudan doğruya ilgili olması kaydıyla, sözleşmenin taraflarına ait kişisel verilerin işlenmesinin gerekli olması” hukuki sebebine dayanarak ve iletişim bilgileriniz sizlere ticari elektronik ileti gönderebilmek amacıyla açık rızanıza dayanarak otomatik yolla işlenmektedir ve sadece hukuki uyuşmazlıklarda ilgili yargı mercileriyle paylaşılacaktır.</p>
+            <p>Kanunun ilgili kişinin haklarını düzenleyen 11. Maddesi kapsamındaki taleplerinizi, “Veri Sorumlusuna Başvuru Usul ve Esasları Hakkında Tebliğe” Madde 5’e göre:</p>
+            <div class="address-box">
+                <strong>Yazılı Başvuru Adresi:</strong> Kızılağaç Mahallesi No:221 Manavgat / ANTALYA<br><br>
+                <strong>E-Posta Adresi:</strong> account@sunmeliabeachresort.com
             </div>
-        </article>
-    </main>
+        </div>
 
-    <footer class="concierge-footer">
-        <p class="powered-by">Seamelia Beach Resort &copy; 2026</p>
-    </footer>
+        <div id="lang-en" class="lang-content">
+            <h1>Clarification Text on Personal Data Processed in Guest Internet Usage</h1>
+            <p>This clarification text has been prepared by Mutlular Otelcilik Ticaret Tarım ve İnşaat Anonim Şirketi, in the capacity of data controller, within the scope of Article 10 of the Personal Data Protection Law No. 6698 and the Communiqué on the Procedures and Principles to be Followed in Fulfilling the Obligation to Clarify, regarding the hotspot user panel filled out for internet use.</p>
+            <p>Your personal data, limited to your Room number, date of birth, and internet usage traffic information shared through the hotspot user panel filled out for internet use, are processed in order to ensure the security of the data controller in the internet service provided and to fulfill the obligation to record traffic information pursuant to Law No. 5651.</p>
+            <p>The personal data in question are processed automatically based on the legal grounds set forth in Article 5 of the KVKK, namely "explicitly prescribed by law" and "necessary for the legitimate interests of the data controller, provided that it does not harm the fundamental rights and freedoms of the data subject". This personal data will be shared with authorized public institutions and organizations.</p>
+            <p>Your requests within the scope of Article 11 of the Law, which regulates the rights of the data subject, according to Article 5 of the "Communiqué on the Procedures and Principles of Application to the Data Controller":</p>
+            <div class="address-box">
+                <strong>Written Application Address:</strong> Kızılağaç Mahallesi No:221 Manavgat / ANTALYA<br><br>
+                <strong>E-Mail Address:</strong> account@sunmeliabeachresort.com
+            </div>
+
+            <h1>Clarification Text on Personal Data Processed in the E-Newsletter Form</h1>
+            <p>This Clarification Text has been prepared by Mutlular Otelcilik Ticaret Tarım ve İnşaat Anonim Şirketi, acting in the capacity of data controller, within the framework of Article 10 of the Personal Data Protection Law No. 6698 ("KVKK") and the Communiqué on the Procedures and Principles to be Followed in Fulfilling the Obligation to Clarify, in order to inform you about the purposes of processing your personal data, legal grounds, method of collection, to whom it can be transferred, and your rights within the scope of KVKK.</p>
+            <p>Your e-mail address personal data, which you share through the E-Newsletter Form on our website, is processed for the purposes of carrying out the necessary work by business units to enable data subjects to benefit from the products and services offered by our company, executing relevant business processes, and sending commercial electronic messages within the scope of advertising and campaign activities.</p>
+            <p>The personal data in question are processed automatically based on the legal ground in Article 5 of the KVKK, "provided that it is directly related to the establishment or performance of a contract, the processing of personal data belonging to the parties to the contract is necessary", and based on your explicit consent in order to send commercial electronic messages to your contact information, and will only be shared with the relevant judicial authorities in legal disputes.</p>
+            <p>Your requests within the scope of Article 11 of the Law, which regulates the rights of the data subject, according to Article 5 of the "Communiqué on the Procedures and Principles of Application to the Data Controller":</p>
+            <div class="address-box">
+                <strong>Written Application Address:</strong> Kızılağaç Mahallesi No:221 Manavgat / ANTALYA<br><br>
+                <strong>E-Mail Address:</strong> account@sunmeliabeachresort.com
+            </div>
+        </div>
+
+        <div id="lang-de" class="lang-content">
+            <h1>Aufklärungstext über die bei der Internetnutzung von Gästen verarbeiteten personenbezogenen Daten</h1>
+            <p>Dieser Aufklärungstext wurde von Mutlular Otelcilik Ticaret Tarım ve İnşaat Anonim Şirketi in ihrer Eigenschaft als Datenverantwortlicher im Rahmen von Artikel 10 des Gesetzes zum Schutz personenbezogener Daten Nr. 6698 und dem Communiqué über die Verfahren und Grundsätze, die bei der Erfüllung der Aufklärungspflicht zu beachten sind, bezüglich des für die Internetnutzung ausgefüllten Hotspot-Benutzerpanels erstellt.</p>
+            <p>Ihre personenbezogenen Daten, die auf Ihre Zimmernummer, Ihr Geburtsdatum und die über das Hotspot-Benutzerpanel geteilten Daten zum Internet-Verkehr beschränkt sind, werden verarbeitet, um die Sicherheit des Datenverantwortlichen bei dem angebotenen Internetdienst zu gewährleisten und die Verpflichtung zur Aufzeichnung von Verkehrsinformationen gemäß dem Gesetz Nr. 5651 zu erfüllen.</p>
+            <p>Die betreffenden personenbezogenen Daten werden automatisch auf der Grundlage der rechtlichen Gründe verarbeitet, die in Artikel 5 des KVKK aufgeführt sind: „gesetzlich ausdrücklich vorgesehen“ und „für die berechtigten Interessen des Datenverantwortlichen erforderlich, sofern die Grundrechte und Grundfreiheiten der betroffenen Person nicht beeinträchtigt werden“. Diese personenbezogenen Daten werden an autorisierte öffentliche Institutionen und Organisationen weitergegeben.</p>
+            <p>Ihre Anträge im Rahmen von Artikel 11 des Gesetzes, der die Rechte der betroffenen Person regelt, gemäß Artikel 5 des „Communiqué über die Verfahren und Grundsätze der Antragstellung an den Datenverantwortlichen“:</p>
+            <div class="address-box">
+                <strong>Schriftliche Bewerbungsadresse:</strong> Kızılağaç Mahallesi No:221 Manavgat / ANTALYA<br><br>
+                <strong>E-Mail-Adresse:</strong> account@sunmeliabeachresort.com
+            </div>
+
+            <h1>Aufklärungstext über im E-Newsletter-Formular verarbeitete personenbezogene Daten</h1>
+            <p>Dieser Aufklärungstext wurde von Mutlular Otelcilik Ticaret Tarım ve İnşaat Anonim Şirketi, die als Datenverantwortlicher handelt, im Rahmen von Artikel 10 des Gesetzes zum Schutz personenbezogener Daten Nr. 6698 („KVKK“) und dem Communiqué über die Verfahren und Grundsätze, die bei der Erfüllung der Aufklärungspflicht zu beachten sind, erstellt, um Sie über die Zwecke der Verarbeitung Ihrer personenbezogenen Daten, rechtliche Gründe, Erhebungsmethode, an wen sie übermittelt werden können und Ihre Rechte im Rahmen des KVKK zu informieren.</p>
+            <p>Ihre E-Mail-Adresse als personenbezogenes Datum, das Sie über das E-Newsletter-Formular auf unserer Website teilen, wird zu dem Zweck verarbeitet, die notwendigen Arbeiten durch die Geschäftsbereiche durchzuführen, damit die betroffenen Personen von den von unserem Unternehmen angebotenen Produkten und Dienstleistungen profitieren können, die entsprechenden Geschäftsprozesse auszuführen und kommerzielle elektronische Mitteilungen im Rahmen von Werbe- und Kampagnenaktivitäten zu versenden.</p>
+            <p>Die betreffenden personenbezogenen Daten werden automatisch auf der Grundlage des rechtlichen Grundes in Artikel 5 des KVKK verarbeitet: „vorausgesetzt, dass es in direktem Zusammenhang mit der Begründung oder Erfüllung eines Vertrages steht, ist die Verarbeitung personenbezogener Daten der Vertragsparteien erforderlich“, und basierend auf Ihrer ausdrücklichen Einwilligung, um kommerzielle elektronische Mitteilungen an Ihre Kontaktinformationen zu senden, und werden nur bei rechtlichen Streitigkeiten an die zuständigen Justizbehörden weitergegeben.</p>
+            <p>Ihre Anträge im Rahmen von Artikel 11 des Gesetzes, der die Rechte der betroffenen Person regelt, gemäß Artikel 5 des „Communiqué über die Verfahren und Grundsätze der Antragstellung an den Datenverantwortlichen“:</p>
+            <div class="address-box">
+                <strong>Schriftliche Bewerbungsadresse:</strong> Kızılağaç Mahallesi No:221 Manavgat / ANTALYA<br><br>
+                <strong>E-Mail-Adresse:</strong> account@sunmeliabeachresort.com
+            </div>
+        </div>
+
+        <div id="lang-ru" class="lang-content">
+            <h1>Разъяснительный текст о персональных данных, обрабатываемых при использовании интернета гостями</h1>
+            <p>Настоящий разъяснительный текст подготовлен компанией Mutlular Otelcilik Ticaret Tarım ve İnşaat Anonim Şirketi в качестве оператора персональных данных в соответствии со статьей 10 Закона о защите персональных данных № 6698 и Коммюнике о процедурах и принципах, соблюдаемых при выполнении обязательства по разъяснению, касательно панели пользователя хот-спота, заполняемой для использования интернета.</p>
+            <p>Ваши персональные данные, ограниченные номером комнаты, датой рождения и информацией о интернет-трафике, переданные через панель пользователя хот-спота для использования интернета, обрабатываются в целях обеспечения безопасности оператора в предоставляемой интернет-услуге и выполнения обязательства по регистрации информации о трафике в соответствии с Законом № 5651.</p>
+            <p>Указанные персональные данные обрабатываются автоматически на основании правовых причин, изложенных в статье 5 KVKK: «прямо предусмотрено законом» и «необходимо для законных интересов оператора, при условии, что это не нарушает основные права и свободы субъекта данных». Эти персональные данные будут передаваться уполномоченным государственным органам и организациям.</p>
+            <p>Ваши запросы в рамках статьи 11 Закона, регулирующей права субъекта данных, в соответствии со статьей 5 «Коммюнике о процедурах и принципах обращения к оператору персональных данных»:</p>
+            <div class="address-box">
+                <strong>Адрес для письменного обращения:</strong> Kızılağaç Mahallesi No:221 Manavgat / ANTALYA<br><br>
+                <strong>Адрес электронной почты:</strong> account@sunmeliabeachresort.com
+            </div>
+
+            <h1>Разъяснительный текст о персональных данных, обрабатываемых в форме подписки на электронный бюллетень</h1>
+            <p>Настоящий Разъяснительный текст подготовлен компанией Mutlular Otelcilik Ticaret Tarım ve İnşaat Anonim Şirketi, действующей в качестве оператора персональных данных, в рамках статьи 10 Закона о защите персональных данных № 6698 («KVKK») и Коммюнике о процедурах и принципах, соблюдаемых при выполнении обязательства по разъяснению, с целью информирования вас о целях обработки ваших персональных данных, правовых основаниях, методе сбора, лицах, которым они могут быть переданы, и ваших правах в рамках KVKK.</p>
+            <p>Ваш адрес электронной почты (персональные данные), которым вы делитесь через форму подписки на электронный бюллетень на нашем веб-сайте, обрабатывается в целях проведения необходимых работ бизнес-подразделениями для предоставления субъектам данных возможности пользоваться продуктами и услугами, предлагаемыми нашей компанией, выполнения соответствующих бизнес-процессов, а также отправки коммерческих электронных сообщений в рамках рекламных акций и кампаний.</p>
+            <p>Указанные персональные данные обрабатываются автоматически на основании правового основания, изложенного в статье 5 KVKK: «при условии, что это непосредственно связано с заключением или исполнением договора, обработка персональных данных, принадлежащих сторонам договора, является необходимой», а также на основании вашего явного согласия с целью отправки коммерческих электронных сообщений на ваши контактные данные, и будут передаваться только соответствующим судебным органам в случае возникновения правовых споров.</p>
+            <p>Ваши запросы в рамках статьи 11 Закона, регулирующей права субъекта данных, в соответствии со статьей 5 «Коммюнике о процедурах и принципах обращения к оператору персональных данных»:</p>
+            <div class="address-box">
+                <strong>Адрес для письменного обращения:</strong> Kızılağaç Mahallesi No:221 Manavgat / ANTALYA<br><br>
+                <strong>Адрес электронной почты:</strong> account@sunmeliabeachresort.com
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function switchLang(lang) {
+            // Tüm içerikleri gizle
+            document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+            // Seçilen dili göster
+            document.getElementById('lang-' + lang).classList.add('active');
+            
+            // Tüm butonların aktifliğini kaldır
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            // Tıklanan butonu aktif yap
+            event.target.classList.add('active');
+        }
+    </script>
 
 </body>
 </html>
